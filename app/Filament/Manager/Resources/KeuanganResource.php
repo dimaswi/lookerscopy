@@ -2,9 +2,9 @@
 
 namespace App\Filament\Manager\Resources;
 
-use App\Filament\Manager\Resources\ManagerResource\Pages;
-use App\Filament\Manager\Resources\ManagerResource\RelationManagers;
-use App\Models\Manager;
+use App\Filament\Manager\Resources\KeuanganResource\Pages;
+use App\Filament\Manager\Resources\KeuanganResource\RelationManagers;
+use App\Models\Keuangan;
 use App\Models\Pendaftaran;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,15 +14,15 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ManagerResource extends Resource
+class KeuanganResource extends Resource
 {
     protected static ?string $model = Pendaftaran::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
-    protected static ?string $navigationLabel = 'Manager';
+    protected static ?string $navigationLabel = 'Keuangan';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -42,10 +42,12 @@ class ManagerResource extends Resource
                 //
             ])
             ->actions([
-                //
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                //
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -60,8 +62,8 @@ class ManagerResource extends Resource
     {
         return [
             'index' => Pages\MainDashboard::route('/'),
-            'create' => Pages\CreateManager::route('/create'),
-            'edit' => Pages\EditManager::route('/{record}/edit'),
+            'create' => Pages\CreateKeuangan::route('/create'),
+            'edit' => Pages\EditKeuangan::route('/{record}/edit'),
         ];
     }
 }
