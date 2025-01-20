@@ -29,7 +29,8 @@ class DiagnosaPasien extends BaseWidget
                 )
                 ->whereMonth('medicalrecord.diagnosa.TANGGAL', Carbon::now()->month)
                 ->groupBy('medicalrecord.diagnosa.KODE')
-                ->take(4)
+                ->orderBy('total_diagnosa', 'desc')
+                ->limit(10)
             )
             ->columns([
                 TextColumn::make('diagnosa'),

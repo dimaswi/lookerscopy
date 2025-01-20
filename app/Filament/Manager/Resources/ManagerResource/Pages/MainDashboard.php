@@ -4,10 +4,13 @@ namespace App\Filament\Manager\Resources\ManagerResource\Pages;
 
 use App\Filament\Manager\Resources\ManagerResource;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\AsuransiChart;
+use App\Filament\Manager\Resources\ManagerResource\Widgets\DesaPasienTable;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\DiagnosaPasien;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\KunjunganPasien;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\KunjunganPasienChart;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\PendaftaranPasien;
+use App\Filament\Manager\Resources\ManagerResource\Widgets\SebaranUmumChart;
+use App\Filament\Manager\Resources\ManagerResource\Widgets\SebaranUmurChart;
 use Filament\Resources\Pages\Page;
 
 class MainDashboard extends Page
@@ -22,10 +25,12 @@ class MainDashboard extends Page
     {
         return [
             AsuransiChart::class,
-            DiagnosaPasien::class,
+            SebaranUmurChart::class,
             PendaftaranPasien::class,
             KunjunganPasien::class,
-            KunjunganPasienChart::class
+            KunjunganPasienChart::class,
+            DesaPasienTable::class,
+            DiagnosaPasien::class,
         ];
     }
 }
