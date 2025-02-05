@@ -11,7 +11,13 @@ use App\Filament\Manager\Resources\ManagerResource\Widgets\KunjunganPasienChart;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\PendaftaranPasien;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\SebaranUmumChart;
 use App\Filament\Manager\Resources\ManagerResource\Widgets\SebaranUmurChart;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Form;
+use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
 use Filament\Resources\Pages\Page;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 
 class MainDashboard extends Page
 {
@@ -21,16 +27,51 @@ class MainDashboard extends Page
 
     protected static ?string $title = 'Manager Dashboard';
 
-    protected function getHeaderWidgets(): array
+    use InteractsWithForms;
+
+    public ?array $data = [];
+
+    public $filter = 'Hari';
+
+    public function mount(): void
     {
-        return [
-            AsuransiChart::class,
-            SebaranUmurChart::class,
-            PendaftaranPasien::class,
-            KunjunganPasien::class,
-            KunjunganPasienChart::class,
-            DesaPasienTable::class,
-            DiagnosaPasien::class,
-        ];
+        $this->form->fill();
     }
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Select::make('filter_waktu')
+                    ->hiddenLabel()
+                    ->default('Hari')
+                    ->live()
+                    ->options([
+                        'Hari' => 'Hari',
+                        'Bulan' => 'Bulan',
+                        'Tahun' => 'Tahun',
+                    ])
+                    ->selectablePlaceholder(false)
+            ])
+            ->statePath('data');
+    }
+
+    public function create(): void
+    {
+        // $this->filterValue = $this->form->getState()['filter_waktu']?? 'Hari';
+        // dd($this->filterValue);
+    }
+
+    // protected function getHeaderWidgets(): array
+    // {
+    //     return [
+    //         AsuransiChart::class,
+    //         SebaranUmurChart::class,
+    //         PendaftaranPasien::class,
+    //         KunjunganPasien::class,
+    //         KunjunganPasienChart::class,
+    //         DesaPasienTable::class,
+    //         DiagnosaPasien::class,
+    //     ];
+    // }
 }

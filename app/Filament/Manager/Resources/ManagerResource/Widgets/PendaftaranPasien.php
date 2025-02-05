@@ -13,7 +13,7 @@ class PendaftaranPasien extends BaseWidget
     {
         // WIDGET HARI INI
         $kemarin = date("Y-m-d", strtotime('-1 days'));
-        $pendaftaran_hari_ini = Pendaftaran::whereDate('tanggal', Carbon::today())->get()->count();
+        $pendaftaran_hari_ini = Pendaftaran::whereDate('tanggal', Carbon::today('Asia/Jakarta'))->get()->count();
         $pendaftaran_kemarin = Pendaftaran::whereDate('tanggal', $kemarin)->get()->count();
 
         if ($pendaftaran_hari_ini < $pendaftaran_kemarin) {
@@ -31,8 +31,8 @@ class PendaftaranPasien extends BaseWidget
         }
 
         //WIDGET BULAN INI
-        $pendaftaran_bulan_lalu =  Pendaftaran::whereMonth('tanggal', Carbon::now()->subMonth()->month)->get()->count();
-        $pendaftaran_bulan_ini = Pendaftaran::whereMonth('tanggal', Carbon::now()->month)->get()->count();
+        $pendaftaran_bulan_lalu =  Pendaftaran::whereMonth('tanggal', Carbon::now('Asia/Jakarta')->subMonth()->month)->get()->count();
+        $pendaftaran_bulan_ini = Pendaftaran::whereMonth('tanggal', Carbon::now('Asia/Jakarta')->month)->get()->count();
 
         if ($pendaftaran_bulan_ini < $pendaftaran_bulan_lalu) {
             $status_bulan_ini = 'Berkurang';
@@ -49,8 +49,8 @@ class PendaftaranPasien extends BaseWidget
         }
 
         //WIDGET TAHUN INI
-        $pendaftaran_tahun_lalu =  Pendaftaran::whereYear('tanggal', Carbon::now()->subYears()->year)->get()->count();
-        $pendaftaran_tahun_ini = Pendaftaran::whereYear('tanggal', Carbon::now()->year)->get()->count();
+        $pendaftaran_tahun_lalu =  Pendaftaran::whereYear('tanggal', Carbon::now('Asia/Jakarta')->subYears()->year)->get()->count();
+        $pendaftaran_tahun_ini = Pendaftaran::whereYear('tanggal', Carbon::now('Asia/Jakarta')->year)->get()->count();
 
         if ($pendaftaran_tahun_ini < $pendaftaran_tahun_lalu) {
             $status_tahun_ini = 'Berkurang';
