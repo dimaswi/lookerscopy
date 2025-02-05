@@ -9,6 +9,8 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class PendaftaranPasien extends BaseWidget
 {
+    public $filterData;
+    protected static ?string $pollingInterval = null;
     protected function getStats(): array
     {
         // WIDGET HARI INI

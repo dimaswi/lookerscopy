@@ -34,6 +34,7 @@ class AsuransiChart extends ApexChartWidget
 
     protected static ?string $pollingInterval = null;
 
+    public $filterData;
 
     protected function getOptions(): array
     {

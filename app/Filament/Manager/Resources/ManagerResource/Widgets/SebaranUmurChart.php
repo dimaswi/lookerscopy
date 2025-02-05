@@ -33,6 +33,8 @@ class SebaranUmurChart extends ApexChartWidget
      * @return array
      */
 
+    public $filterData;
+
     protected function getOptions(): array
     {
         if ($this->filterData == 'Hari') {

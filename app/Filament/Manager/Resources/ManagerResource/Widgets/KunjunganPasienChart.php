@@ -31,6 +31,8 @@ class KunjunganPasienChart extends ApexChartWidget
      */
 
     protected int | string | array $columnSpan = 'full';
+    protected static ?string $pollingInterval = null;
+    public $filterData;
 
     protected function getOptions(): array
     {
