@@ -2,10 +2,9 @@
 
 namespace App\Filament\Manager\Resources;
 
-use App\Filament\Manager\Resources\KeuanganResource\Pages;
-use App\Filament\Manager\Resources\KeuanganResource\RelationManagers;
-use App\Models\Keuangan;
-use App\Models\Pendaftaran;
+use App\Filament\Manager\Resources\OfficeResource\Pages;
+use App\Filament\Manager\Resources\OfficeResource\RelationManagers;
+use App\Models\Office;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,15 +13,15 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class KeuanganResource extends Resource
+class OfficeResource extends Resource
 {
-    protected static ?string $model = Pendaftaran::class;
+    protected static ?string $model = Office::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
-    protected static ?string $navigationLabel = 'Keuangan';
+    protected static ?string $navigationLabel = 'Office';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -62,8 +61,8 @@ class KeuanganResource extends Resource
     {
         return [
             'index' => Pages\MainDashboard::route('/'),
-            'create' => Pages\CreateKeuangan::route('/create'),
-            'edit' => Pages\EditKeuangan::route('/{record}/edit'),
+            // 'create' => Pages\CreateOffice::route('/create'),
+            // 'edit' => Pages\EditOffice::route('/{record}/edit'),
         ];
     }
 }

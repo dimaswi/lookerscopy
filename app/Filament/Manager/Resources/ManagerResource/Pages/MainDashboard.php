@@ -25,7 +25,7 @@ class MainDashboard extends Page
 
     protected static string $view = 'filament.manager.resources.manager-resource.pages.main-dashboard';
 
-    protected static ?string $title = 'Manager Dashboard';
+    protected static ?string $title = 'Dashboard Pelayanan';
 
     use InteractsWithForms;
 

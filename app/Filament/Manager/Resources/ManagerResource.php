@@ -18,9 +18,9 @@ class ManagerResource extends Resource
 {
     protected static ?string $model = Pendaftaran::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
-    protected static ?string $navigationLabel = 'Manager';
+    protected static ?string $navigationLabel = 'Pelayanan';
 
     protected static ?int $navigationSort = 1;
 

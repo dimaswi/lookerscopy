@@ -118,6 +118,21 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'office' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL_OFFICE'),
+            'host' => env('DB_HOST_OFFICE', '127.0.0.1'),
+            'port' => env('DB_PORT_OFFICE', '5432'),
+            'database' => env('DB_DATABASE_OFFICE', 'forge'),
+            'username' => env('DB_USERNAME_OFFICE', 'forge'),
+            'password' => env('DB_PASSWORD_OFFICE', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
