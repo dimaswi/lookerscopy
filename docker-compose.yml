@@ -26,6 +26,10 @@ services:
             MYSQL_ROOT_PASSWORD: 'dimas1950'
         ports:
             - '3302:3306'
+        ulimit:
+            nofile:
+                soft: 262144
+                hard: 262144
         networks:
             - webapp
 
